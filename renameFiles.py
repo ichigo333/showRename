@@ -9,11 +9,11 @@ def rename_files(path):
     # Loop through the files
     for file in files:
         # Parse the filename using regular expressions
-        match = re.search(r'^(.+?)(?:\.| )S(\d+)[eE](\d+).(\d+p)\.(.+)$', file)
+        match = re.search(r'^(.+?)(?:\.| )[sS](\d+)[eE](\d+).(\d+p)\.(.+)$', file)
         if match:
             # Build the new filename with the same extension
             file_extension = os.path.splitext(file)[1]
-            new_filename = f"{match.group(1).replace(' ', '_').replace('.', '_')}_S{match.group(2)}E{match.group(3)}_{match.group(4)}{file_extension}"
+            new_filename = f"{match.group(1).replace(' ', '_').replace('.', '_')}_s{match.group(2)}e{match.group(3)}_{match.group(4)}{file_extension}"
             new_filename = re.sub(r'(\d+p).*?(\.[^.]+$)', r'\1\2', new_filename)
             old_path = os.path.join(path, file)
             new_path = os.path.join(path, new_filename)
